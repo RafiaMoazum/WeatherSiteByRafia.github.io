@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Weather App</title>
+    
+    <link rel="stylesheet"  href="home.css">
+</head>
+<body>
+    
+    <div id="main" >
+
+        
+        <h1>Weather in Lahore</h1>
+        <div id="imgSpace"><i class="fas fa-sun iconSize" style="color: #edf10e;"></i></div>
+
+       <h3>{%city%},{%country%}</h3>
+       <span id="day">Wed</span>  <span id="date">| April 8</span>  <span id="time"> | 12:30 PM</span> 
+
+       <h2>{%tempVal%} ℃</h2>
+       <p>MIN {%tempMin%} | MAX {%tempMax%}</p>
+
+    </div>
+
+    <script>
+          
+          const imgSpace = document.getElementById("imgSpace");
+    const tempStatus = "{%tempStatus%}";
+
+    if (tempStatus === "Sunny") {
+        imgSpace.innerHTML = '<i class="fas fa-sun iconSize" style="color: #edf10e;"></i>';
+    } else if (tempStatus === "Cloudy") {
+        imgSpace.innerHTML = '<i class="fas fa-cloud iconSize" style="color: #888;"></i>';
+    } else if (tempStatus === "Rainy") {
+        imgSpace.innerHTML = '<i class="fas fa-cloud-rain iconSize" style="color: #6c757d;"></i>';
+    } else if (tempStatus === "Smoke") {
+        imgSpace.innerHTML = '<i class="fas fa-smog iconSize" style="color: #555;"></i>';
+    } else {
+        imgSpace.innerHTML = '<i class="fas fa-sun iconSize" style="color: #edf10e;"></i>';
+    }
+
+            //Day
+            function getDay()
+            {
+            const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+            const d= new Date();
+            let day= weekday[d.getDay()]
+            console.log(day);
+            
+            return day;
+            }
+
+            //Date
+            function getCurrentDate()
+            {
+            const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            const  date= new Date();
+            let currentMonth= months[date.getMonth()];
+            let currentDate=date.getDate()
+            let formattedDate = "| " + currentMonth + ' '+ currentDate;
+            console.log(formattedDate);
+          
+            return formattedDate;
+            }
+
+            //Time
+            function getCurrentTime()
+            {
+            const time= new Date();
+            let hours= time.getHours();
+            let minutes= time.getMinutes();
+            const amOrpm= hours >= 12? "PM" : "AM"
+            hours= hours %12;           // to convert 24 hour format to 12 hour format
+
+            hours= hours==0? 12 : hours;              //handling midnight
+
+            minutes= minutes < 10? "0" + minutes : minutes;
+            const formattedTime= "| "+ hours + ":" + minutes +" "+ amOrpm;
+           
+            console.log(formattedTime);
+            return formattedTime;
+            }
+
+            let day= getDay();
+            let date=getCurrentDate();
+            let time=getCurrentTime();
+
+            document.getElementById("day").innerHTML = day;
+            document.getElementById("date").innerHTML = date;
+            document.getElementById("time").innerHTML = time;
+            
+
+           
+
+          
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+
+body{
+    height: 100vh;
+    color:white;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+#main
+{
+    background-color: rgb(10, 2, 77);
+    border:1px solid rgb(3, 3, 3);
+    text-align: center;
+    width:350px;
+    
+}
+
+#imgSpace
+{
+    background-color: rgb(151, 206, 252);
+    border:1 px solid rgb(9, 80, 36);
+    height:120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ .iconSize
+{
+    font-size: 3em;
+    
+} 
